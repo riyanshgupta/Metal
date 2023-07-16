@@ -33,7 +33,7 @@ def getexercisebycategory(muscle, equipment, level):
 def bard(data):
     url1 = "https://gptprod-api.dadosanalytics.com/dottie/chat"
     headers1 = {
-        'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4OTQ0MjA1OSwianRpIjoiMGQ4OTNiY2YtYmY4Zi00MGQyLTkxMGItNTk5Mzg4M2E1N2EwIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjY0YjJkNmNhZGUzZTZlYzBlNmE4NTE3OSIsIm5iZiI6MTY4OTQ0MjA1OSwiZXhwIjoxNjg5NTI4NDU5fQ.2dyfDWt9d9qopRijdf0vW-BWYNShEUl1F7ZYChYS_cU',
+        'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4OTUyMzEyNiwianRpIjoiYzc3YjZkZGQtMjY4Yy00MjcyLWIxMWMtYjRjYmFiMDMyM2U1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjY0YjQxM2ExNTMzYzY1YzViMWVlZjBjZiIsIm5iZiI6MTY4OTUyMzEyNiwiZXhwIjoxNjg5NjA5NTI2fQ.QsXuOrDMhRT8MJuPs0BLz6_XHQqNm8e5TlXBgoPte_w',
         'User-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Mobile Safari/537.36',
         'Accept-language': 'en-US,en;q=0.7',
         'Accept': 'application/json, text/plain, */*',
@@ -42,7 +42,7 @@ def bard(data):
     payloads1 = {
         "prompt_text": f"My height is {data.get('height')}cm, current weight is {data.get('weight')}kg, gender is {data.get('gender')}, activity level is {data.get('activity_level')}, age is {data.get('age')} and want to {data.get('goal')} weight so prepare a Detailed diet chart for me.",
         "customer_key": "$2b$12$pFNp5.0D.785FLa3hcxctuAgV3mvQA4f1tZkAKESvrRN7hWgtsWwm",
-        "email": "riyanshgupta750@gmail.com"
+        "email": "riyanshgupta794@gmail.com"
     }
     res = requests.request("POST", url=url1, json=payloads1, headers=headers1)
     response = dict(res.json())
