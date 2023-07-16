@@ -32,7 +32,7 @@ markdown-it-py
 MarkupSafe
 mdurl
 optional-django
-packagin
+packaging
 parse
 Pillow
 prompt-toolkit
