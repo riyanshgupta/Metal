@@ -62,5 +62,5 @@ gunicorn
 google-ai-generativelanguage
 google-api-core
 google-auth
-google-generativeai==0.1.0
+google-generativeai
 googleapis-common-protos
