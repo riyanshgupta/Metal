@@ -31,24 +31,14 @@ def getexercisebycategory(muscle, equipment, level):
     return result
 
 def bard(data):
-    url1 = "https://gptprod-api.dadosanalytics.com/dottie/chat"
-    headers1 = {
-        'Authorization':'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY4OTUyMzEyNiwianRpIjoiYzc3YjZkZGQtMjY4Yy00MjcyLWIxMWMtYjRjYmFiMDMyM2U1IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjY0YjQxM2ExNTMzYzY1YzViMWVlZjBjZiIsIm5iZiI6MTY4OTUyMzEyNiwiZXhwIjoxNjg5NjA5NTI2fQ.QsXuOrDMhRT8MJuPs0BLz6_XHQqNm8e5TlXBgoPte_w',
-        'User-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Mobile Safari/537.36',
-        'Accept-language': 'en-US,en;q=0.7',
-        'Accept': 'application/json, text/plain, */*',
-        'Accept-encoding': 'gzip, deflate, br',
-    }
-    payloads1 = {
-        "prompt_text": f"My height is {data.get('height')}cm, current weight is {data.get('weight')}kg, gender is {data.get('gender')}, activity level is {data.get('activity_level')}, age is {data.get('age')} and want to {data.get('goal')} weight so prepare a Detailed diet chart for me.",
-        "customer_key": "$2b$12$pFNp5.0D.785FLa3hcxctuAgV3mvQA4f1tZkAKESvrRN7hWgtsWwm",
-        "email": "riyanshgupta794@gmail.com"
-    }
-    res = requests.request("POST", url=url1, json=payloads1, headers=headers1)
-    response = dict(res.json())
-    response = response.get('data')
     
-    return response.get('text')  #read about webhooks in python flask
+    key="AIzaSyCxa5DEoAezgHi6POcFvDeRoBxPWfHrN6Y"
+    url = f"https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key={key}"
+    headers = {"Content-Type": "application/json"}
+     
+    data = {"prompt": {"text": f"My height is {data.get('height')}cm, current weight is {data.get('weight')}kg, gender is {data.get('gender')}, activity level is {data.get('activity_level')}, age is {data.get('age')} and want to {data.get('goal')} weight so prepare a Detailed diet chart for me. Don't give me calories intake or macronutrients"}}
+    response = requests.post(url, headers=headers, json=data)
+    return dict(response.json()).get('candidates')[0].get('output') #read about webhooks in python flask
 
 # ------------------------------------------------------
 
@@ -106,6 +96,11 @@ def prepare():
     chart=chart.replace("**", "", 1)
     chart=chart.replace("**", "4. ", 1)
     chart=chart.replace("**", "", 1)
+    chart=chart.replace("**", "5. ", 1)
+    chart=chart.replace("**", "", 1)
+    chart=chart.replace("**", "6. ", 1)
+    chart=chart.replace("**", "", 1)
+    chart=chart.replace('*', "")
     return jsonify({'diet-chart'+received_key: chart})
     
 @app.route("/calculate", methods=['POST'])
