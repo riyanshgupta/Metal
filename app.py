@@ -3,7 +3,6 @@ from flask import Flask, jsonify, request, render_template, url_for, flash, sess
 import secrets
 from tools import calories as cl, Bmi
 from waitress import serve
-import pprint
 import google.generativeai as palm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'making-flask'
