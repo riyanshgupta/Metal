@@ -62,5 +62,5 @@ gunicorn
 google-ai-generativelanguage
 google-api-core
 google-auth
-git+https://github.com/google/generative-ai-python.git@main#egg=generativeai
+
 googleapis-common-protos
