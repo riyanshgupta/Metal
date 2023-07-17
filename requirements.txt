@@ -59,3 +59,8 @@ websockets
 Werkzeug
 zipp
 gunicorn
+google-ai-generativelanguage
+google-api-core
+google-auth
+google-generativeai
+googleapis-common-protos
