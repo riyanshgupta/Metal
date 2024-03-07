@@ -1,34 +1,25 @@
 import requests
-from flask import Flask, jsonify, request, render_template, url_for, flash, session
+from flask import Flask, jsonify, request, render_template, url_for, flash, session, make_response
+from bs4 import BeautifulSoup
 import secrets
-from tools import calories as cl, Bmi
+from tools import calories as cl, Bmi, api
+from tools import data
 from waitress import serve
+
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'making-flask'
+app.config['SECRET_KEY'] = 'something-secret...haha'
 activeclass = 1
 
 # ------------------------Muscles----------------------
 
-lstofmuscles = ["Biceps", "Forearms", "Shoulders", "Triceps", "Quads", "Glutes", "Lats", "Mid back", "Lower back",
+lstofmuscles = ["Biceps", "Forearms", "Shoulders", "Triceps", "Quads", "Glutes", "Lats", "Lower back",
                 "Hamstrings", "Chest", "Abdominals", "Obliques", "Traps", "Calves"]
-lstofequipments = ["Barbell", "Dumbbells", "Kettlebells", "Stretches", "Cables", "Band", "Plate", "TRX", "Bodyweight",
-                   "Yoga", "Machine"]
+lstofequipments = ['Barbell', 'Dumbbells', 'Bodyweight', 'Machine', 'Medicine-Ball', 'Kettlebells', 
+'Stretches', 'Cables', 'Band', 'Plate', 'TRX', 'Yoga', 'Bosu', 'Bosu-Ball', 'Cardio', 'Smith-Machine']
 
-
+# https://musclewiki.com/cables/male/biceps
 
 # --------------------------Functions for specific Tasks----------------------
-
-def getexercisebycategory(muscle, equipment, level):
-    url = "https://musclewiki.p.rapidapi.com/exercises"
-    querystring = {"muscle": str(muscle), "category": str(equipment), "difficulty": str(level)}
-    headers = {
-        "X-RapidAPI-Key": "089f1639cbmshb14fba280fadcb9p1edbf9jsn400b252ef620",
-        "X-RapidAPI-Host": "musclewiki.p.rapidapi.com"
-    }
-
-    response = (requests.request("GET", url, headers=headers, params=querystring)).json()
-    result = response
-    return result
 
 def bard(data):
     
@@ -52,11 +43,24 @@ def home():
 @app.route("/begins", methods=['GET', 'POST'])
 def forms():
     imglink = url_for('static', filename="bgstarted.jpg")
+    session['key']=secrets.token_hex(32)
     if request.method == 'POST':
-        level = request.form.get('level')
         equipment = request.form.get('equipment')
         muscle = request.form.get('muscle')
-        results = getexercisebycategory(muscle, equipment, level)
+
+        #-----------------------new edit -------------------------------
+        if data.muscles.get(muscle) != None and data.equipments.get(equipment)!=None:
+            results = api.get_exercise(muscle=str(data.muscles.get(muscle)['id']), category=str(data.equipments.get(equipment)['id']))
+            return render_template('exercise.html', page="exercise", results = results)
+        
+        flash('Oops! No exercise found. Please try again with different filters', "red")
+        return render_template('forms.html', page="forms", activeclass="forms", imglink=imglink,
+            lstofmuscles=lstofmuscles,
+            lstofequipments=lstofequipments)
+        
+        return render_template('forms.html', page="forms", activeclass="forms", imglink=imglink,
+                               lstofmuscles=lstofmuscles, lstofequipments=lstofequipments, key=session['key'])
+        #---------------------------------------------------------------
         if len(results) == 0:
             flash('Oops! No exercise found. Please try again with different filters', "red")
             return render_template('forms.html', page="forms", activeclass="forms", imglink=imglink,
@@ -68,6 +72,25 @@ def forms():
         return render_template('forms.html', page="forms", activeclass="forms", imglink=imglink,
                                lstofmuscles=lstofmuscles, lstofequipments=lstofequipments, key=session['key'])
 
+@app.route("/exercise/<slug>")
+def exercise(slug):
+    url = "https://musclewiki.com/newapi/exercise/exercises/"
+    payload={"slug": slug}
+    res = requests.get(url=url, params=payload)
+    res = res.json()
+    result = {}
+    if res.get("results")!=None and len(res.get("results")) > 0:
+        result = {
+            "difficulty": res.get("results")[0].get("difficulty"),
+            "correct_steps": res.get("results")[0].get("correct_steps"),
+            "content": api.video(res.get("results")[0].get("name"))
+        }
+        return make_response(jsonify({"status":1, 'result': result}), 200)
+        
+        
+    else :
+        return make_response(jsonify({"status":0, 'result': {}}), 400)
+
 @app.route("/prepare", methods=['POST'])
 def prepare():
     data=request.get_json()
@@ -76,7 +99,7 @@ def prepare():
     session_key = session.get('key')
     cookie_session=str(request.headers.get('Cookie'))
     cookie_session = cookie_session[:8:]
-    if received_key != session_key or received_key==None or cookie_session!='session=':
+    if received_key != session_key :
         return jsonify({'error': 'Unauthorized'}), 401
     if data.get('height')==None:
         return jsonify({'diet-chart'+received_key: "Fill all the values and submit then try again"})
@@ -96,21 +119,16 @@ def prepare():
     chart=chart.replace("**", "", 1)
     chart=chart.replace("**", "4. ", 1)
     chart=chart.replace("**", "", 1)
-    chart=chart.replace("**", "5. ", 1)
-    chart=chart.replace("**", "", 1)
-    chart=chart.replace("**", "6. ", 1)
-    chart=chart.replace("**", "", 1)
-    chart=chart.replace('*', "")
     return jsonify({'diet-chart'+received_key: chart})
     
 @app.route("/calculate", methods=['POST'])
 def calculate():
     data = request.get_json()
     received_key = request.headers.get('X-Auth-Key')
-    session_key = session.get('key')
+    session_key = session.get('key') 
     cookie_session=str(request.headers.get('Cookie'))
     cookie_session = cookie_session[:8:]
-    if received_key != session_key or received_key==None or cookie_session!='session=':
+    if received_key != session_key :
         return jsonify({'error': 'Unauthorized'}), 401
     data = dict(data)
     bmi = Bmi.calculate_bmi_with_info(data['weight'], data['height'] / 100, "en")
@@ -144,8 +162,7 @@ def about():
 
 
 if __name__ == '__main__':
-    # with app.app_context():
-    #     app.run(port=5000, debug=False)
+
     serve(app,
         host='0.0.0.0',
         port=8080,

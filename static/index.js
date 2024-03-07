@@ -1,7 +1,6 @@
 const StrForAuth=document.getElementById('get-from-here').innerText;
 document.getElementById('get-from-here').innerText="";
 document.getElementById('get-from-here').remove();
-// document.querySelector('.get-chart').hidden=true;
 let element = document.querySelector('#search');
 var data={};
 element.addEventListener("click", calculate);
@@ -34,8 +33,7 @@ function calculate(event){
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
-        'X-Auth-Key': StrForAuth 
-        
+        'X-Auth-Key': StrForAuth
         },
         body: JSON.stringify(data)
     })
@@ -111,9 +109,5 @@ function prepare(){
         document.querySelector('.chart-content').innerHTML=`<p class="text-base leading-relaxed text-gray-500 dark:text-gray-400"> ${ chart["diet-chart"+StrForAuth] } <br><br>Do you like this Chart?</p>`
     })
 }
-// let btns = document.querySelectorAll('button[data-modal-hide="defaultModal"]');
-// for(let i=0; i<btns.length; i++) {
-//     a[i].addEventListener('click', function(){
-//         // Don't do backend related things on frontend as it can be unresponsive
-//     });
-// }
+
+

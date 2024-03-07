@@ -5,30 +5,25 @@
       background-image: url("{{ url_for('static', filename='bgstarted.jpg') }}");
   }
 </style>
-<div class="cover-image inline-flex items-center bg-gray-100 bg-blend-multiply parent">
+<div class="cover-image inline-flex items-center bg-gray-100 bg-blend-multiply parent dark:bg-gray-100">
 <div class="forms content p-10">
 <form method="POST">
-    <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Difficulty Level</h3>
-    <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-100 rounded-lg sm:flex dark:bg-gray-900 dark:border-gray-600 dark:text-white">
+    <h2 class="mb-4 font-semibold text-gray-900 dark:text-white text-lg">Get The Exercises...</h2>
+    <!-- <ul class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-100 rounded-lg sm:flex dark:bg-gray-900 dark:border-gray-600 dark:text-white">
         <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
             <div class="flex items-center pl-2 hover:bg-gray-800">
-                <input id="horizontal-list-radio-license" type="radio" value="Beginner" name="level" required class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="horizontal-list-radio-license" class="w-full py-3 ml-1 text-lg text-gray-900 dark:text-gray-300"> Beginner</label>
+                <input id="horizontal-list-radio-license" type="radio" value="male" name="gender" required class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                <label for="horizontal-list-radio-license" class="w-full py-3 ml-1 text-lg text-gray-900 dark:text-gray-300">Male</label>
             </div>
         </li>
-        <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
-            <div class="flex items-center pl-2 hover:bg-gray-800">
-                <input id="horizontal-list-radio-id" type="radio" value="Intermediate" name="level" required class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="horizontal-list-radio-id" class="w-full py-3 ml-1 text-lg text-gray-900 dark:text-gray-300">Intermediate</label>
-            </div>
-        </li>
+        
         <li class="w-full border-b border-gray-200 sm:border-b-0 dark:border-gray-600">
             <div class="flex items-center pl-2 hover:bg-gray-800">
-                <input id="horizontal-list-radio-millitary" type="radio" value="Advanced" name="level" required class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
-                <label for="horizontal-list-radio-millitary" class="w-full py-3 ml-1 text-lg  text-gray-900 dark:text-gray-300">Advanced</label>
+                <input id="horizontal-list-radio-millitary" type="radio" value="female" name="gender" required class="w-4 h-4 text-indigo-600 bg-gray-100 border-gray-300 focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                <label for="horizontal-list-radio-millitary" class="w-full py-3 ml-1 text-lg  text-gray-900 dark:text-gray-300">Female</label>
             </div>
         </li>
-    </ul>
+    </ul> -->
     
       
       <div class="relative w-full mt-4">
@@ -223,7 +218,7 @@
         
         <span class="relative px-3 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-stone-950 rounded-md group-hover:bg-opacity-0">
             <img aria-hidden="true" class="w-5 h-5 mr-2 -ml-1" src="{{url_for('static', filename='favicon-32x32.png')}}" style="float: left; " fill="url(#b)"/></img>
-            Let us prepare your Diet Chart
+            Let our AI prepare your Diet Chart
         </span>
     </button>
     <!-- -------------------------------------------------------------------Main modal---------------------------------------------------------------------------------------- -->

@@ -62,7 +62,6 @@ input[type=number]:focus {
   justify-content: center;
   text-align: center;
   color: #ff2b51;
-  
 }
 .cards {
  background-image: linear-gradient(to right top, #080808, #0b0b0b, #0d0d0d, #0f0f0f, #111111, #141414, #171717, #191919, #1d1d1d, #212121, #252525, #292929);
@@ -125,4 +124,13 @@ input[type=number]:focus {
 }
 .modal{
   background-image: linear-gradient(to right top, #02070e, #04090f, #060a11, #080c12, #0a0d13, #0c0f16, #0e1119, #10131c, #111521, #121727, #13192c, #151b32);
+}
+
+
+.exercise_page{
+  display:inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
 }
