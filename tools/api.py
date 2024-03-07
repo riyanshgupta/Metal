@@ -46,9 +46,6 @@ def get_exercise(muscle:str, category:str):
     url = f"https://musclewiki.com/newapi/exercise/exercises/?limit=20&muscles={muscle}&category={category}"
     headers = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"}
     response = requests.request(method="GET", url=url, headers=headers)
-    
-    with open(file="data.json", mode="w", encoding="utf-8") as f:
-        f.write(response.text)
         
     res = response.json()
     result = []
