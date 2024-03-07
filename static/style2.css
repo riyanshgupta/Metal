@@ -1,0 +1,28 @@
+.exercise-section {
+    display: inline-flex;
+    flex-wrap: wrap;
+    /* grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+body{
+    background-color: #151515f7;
+    background-image: linear-gradient(to right top, #02070e, #04090f, #060a11, #080c12, #0a0d13, #0c0f16, #0e1119, #10131c, #111521, #121727, #1a223b, #232d54);
+    min-height: 100%;
+    margin: 0;
+}
+html{
+    min-height: 100%;
+    margin: 0;
+}
+.exercise-card{
+    min-width: 25rem;
+}
+@media screen and (max-width: 470px)
+{  .exercise-card{
+        min-width:fit-content;
+  }
+}
