@@ -1,8 +1,7 @@
-# Metal - Fitness and Nutrition Solutions 💪 <img src="https://metal-4ufh.onrender.com/static/apple-touch-icon.png" height="30px">
+# Metal - Fitness and Nutrition Solutions <img src="https://metal-4ufh.onrender.com/static/apple-touch-icon.png" height="30px">
 
 Metal is a Flask web application designed to assist users with their fitness journey by providing various features and functionalities related to exercise, diet planning, and BMI calculation.
 
-![Metal Logo](https://metal-4ufh.onrender.com/static/apple-touch-icon.png)
 
 ## Features 🚀
 
@@ -14,7 +13,8 @@ Metal is a Flask web application designed to assist users with their fitness jou
 
 ## Technologies Used 💻
 
-<center><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" height="30px"> <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Beautiful_Soup_logo.png" alt="Beautiful Soup Logo" height="30px"> </center>
+<center><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" height="30px"> <img src="https://www.svgrepo.com/show/303206/javascript-logo.svg" alt="javscript" height="30px"> </center>
+<br>
 - Python
 - Javascript
 - Beautiful Soup
@@ -29,9 +29,6 @@ Metal is a Flask web application designed to assist users with their fitness jou
 4. Configure application settings.
 5. Run the Flask application (`python app.py`).
 
-## License 📝
-
-This project is licensed under the [MIT License](insert_link_to_license_file_here).
 
 ## Acknowledgments 🙏
 
