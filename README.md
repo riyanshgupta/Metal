@@ -13,8 +13,8 @@ Metal is a Flask web application designed to assist users with their fitness jou
 
 ## Technologies Used 💻
 
-<center><img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" height="30px"> <img src="https://www.svgrepo.com/show/303206/javascript-logo.svg" alt="javscript" height="30px"> </center>
-<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" alt="Python Logo" height="30px"> <img src="https://www.svgrepo.com/show/303206/javascript-logo.svg" alt="javscript" height="30px">
+
 - Python
 - Javascript
 - Beautiful Soup
