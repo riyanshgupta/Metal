@@ -17,13 +17,12 @@ lstofmuscles = ["Biceps", "Forearms", "Shoulders", "Triceps", "Quads", "Glutes",
 lstofequipments = ['Barbell', 'Dumbbells', 'Bodyweight', 'Machine', 'Medicine-Ball', 'Kettlebells', 
 'Stretches', 'Cables', 'Band', 'Plate', 'TRX', 'Yoga', 'Bosu', 'Bosu-Ball', 'Cardio', 'Smith-Machine']
 
-# https://musclewiki.com/cables/male/biceps
 
 # --------------------------Functions for specific Tasks----------------------
 
 def bard(data):
     
-    key="AIzaSyCxa5DEoAezgHi6POcFvDeRoBxPWfHrN6Y"
+    key="secretcantbeleaked"
     url = f"https://generativelanguage.googleapis.com/v1beta2/models/text-bison-001:generateText?key={key}"
     headers = {"Content-Type": "application/json"}
      
@@ -74,7 +73,7 @@ def forms():
 
 @app.route("/exercise/<slug>")
 def exercise(slug):
-    url = "https://musclewiki.com/newapi/exercise/exercises/"
+    url = "link"
     payload={"slug": slug}
     res = requests.get(url=url, params=payload)
     res = res.json()
