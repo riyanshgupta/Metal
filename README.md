@@ -1,4 +1,4 @@
-# Metal - Fitness and Nutrition Solutions <img src="https://metal-4ufh.onrender.com/static/apple-touch-icon.png" height="30px">
+# Metal - Fitness and Nutrition Solutions <img src="https://metal-static.onrender.com/apple-touch-icon.png" height="30px">
 
 Metal is a Flask web application designed to assist users with their fitness journey by providing various features and functionalities related to exercise, diet planning, and BMI calculation.
 
